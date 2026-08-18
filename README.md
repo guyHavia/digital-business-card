@@ -5,7 +5,7 @@ No JavaScript, no frameworks, no build step.
 
 ## Live site
 
-<https://itamar-almog.github.io/digital-business-card/>
+<https://guyhavia.github.io/digital-business-card/>
 
 ## Requirements checklist
 
