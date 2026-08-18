@@ -74,6 +74,23 @@ follow the theme too.
 - A print stylesheet that turns the page into a clean one-pager and expands
   link URLs in the margin.
 - Layered backdrop: dot grid, film grain and an accent glow, all CSS-generated.
+- Responsive portrait via `srcset` / `sizes`, so phones fetch the 500px file.
+
+## Verification
+
+| Check | Result |
+| --- | --- |
+| W3C Nu HTML validator | 0 errors, 0 warnings |
+| Horizontal overflow, 320 → 1920px (11 widths) | none at any width |
+| Theme switch, driven by real clicks | tokens, `color-scheme` and knob position flip both ways |
+| WCAG AA contrast, both themes | every text/background pair ≥ 4.5:1 |
+| Print | 4 pages, no clipped or blank content |
+
+The W3C CSS validator reports three "property doesn't exist" errors for
+`animation-timeline` and `animation-range`. Those are CSS scroll-driven
+animations, which the validator has not implemented yet; they are already
+wrapped in `@supports (animation-timeline: view())`, so browsers without
+support simply skip them.
 
 ## Running locally
 

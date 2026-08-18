@@ -83,13 +83,15 @@
   --line-soft: #e7e3d9;
   --fg:        #14161b;
   --fg-2:      #4c535e;
-  --fg-3:      #6c7480;
-  --accent:    #c63c14;
+  /* fg-3 and accent are tuned to clear WCAG AA (4.5:1) as small text against
+     --bg, not just against white. */
+  --fg-3:      #616973;
+  --accent:    #bd3812;
   --accent-2:  #0d7a63;
   --accent-ink:#ffffff;
 
   --dot:       rgba(20, 22, 27, .10);
-  --glow:      rgba(198, 60, 20, .11);
+  --glow:      rgba(189, 56, 18, .11);
   --glow-2:    rgba(13, 122, 99, .09);
   --grain-opacity: .035;
   --portrait-blend: normal;
@@ -1008,7 +1010,10 @@ body::after {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-@media (prefers-reduced-motion: no-preference) {
+/* Screen only. In print there is no scroll timeline for the reveal animations
+   to resolve against, so they would hold their `from` state and blank out most
+   of the page. */
+@media screen and (prefers-reduced-motion: no-preference) {
 
   /* One orchestrated entrance for the fold, staggered by hand. */
   .topbar,
@@ -1082,7 +1087,17 @@ body::after {
   .portrait { width: min(100%, 320px); }
 }
 
-/* --- 900px: hero goes side-by-side, about splits into two columns --------- */
+/* --- 768px: tablets have the width for a side-by-side hero --------------- */
+@media (min-width: 48em) {
+  .hero {
+    grid-template-columns: minmax(200px, .8fr) minmax(0, 1.7fr);
+    align-items: center;
+  }
+
+  .portrait { width: 100%; }
+}
+
+/* --- 900px: about splits, projects and skills go three-up ---------------- */
 @media (min-width: 56.25em) {
   :root { --frame-gap: 20px; }
 
@@ -1142,6 +1157,8 @@ body::after {
    17. Print — collapses to a clean, ink-frugal one-pager
    ========================================================================== */
 
+@page { margin: 14mm; }
+
 @media print {
   :root {
     --bg: #ffffff;
@@ -1171,12 +1188,18 @@ body::after {
 
   .hero { grid-template-columns: 180px 1fr; padding-block: 0 1.5rem; }
 
-  .section { padding-block: 0 1.25rem; break-inside: avoid; }
+  /* Sections are free to split across pages — pinning them whole left half of
+     every sheet blank. Only the small units stay unbroken. */
+  .section { padding-block: 0 1.25rem; }
+
+  .section__head { break-after: avoid; }
 
   .projects { grid-template-columns: repeat(2, 1fr); }
 
   .project,
   .timeline__item,
+  .facts__row,
+  .skillgroup,
   .contact__item { break-inside: avoid; }
 
   a[href^="http"]::after {
