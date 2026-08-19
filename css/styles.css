@@ -76,11 +76,14 @@
    ========================================================================== */
 
 :root:has(#theme-toggle:checked) {
-  --bg:        #efede7;
-  --surface:   #ffffff;
-  --surface-2: #f7f5ef;
-  --line:      #dcd7cb;
-  --line-soft: #e7e3d9;
+  /* Near-white page with a whisper of warmth. Surfaces sit *below* the page
+     here rather than above it: on a light theme, separation reads as a slight
+     recess, whereas in the dark theme --surface is lighter than --bg. */
+  --bg:        #fcfbf8;
+  --surface:   #f3f1ea;
+  --surface-2: #ebe8df;
+  --line:      #ddd8cc;
+  --line-soft: #eae6dc;
   --fg:        #14161b;
   --fg-2:      #4c535e;
   /* fg-3 and accent are tuned to clear WCAG AA (4.5:1) as small text against
@@ -90,10 +93,10 @@
   --accent-2:  #0d7a63;
   --accent-ink:#ffffff;
 
-  --dot:       rgba(20, 22, 27, .10);
-  --glow:      rgba(189, 56, 18, .11);
-  --glow-2:    rgba(13, 122, 99, .09);
-  --grain-opacity: .035;
+  --dot:       rgba(20, 22, 27, .075);
+  --glow:      rgba(189, 56, 18, .10);
+  --glow-2:    rgba(13, 122, 99, .08);
+  --grain-opacity: .022;
   --portrait-blend: normal;
   --portrait-saturate: 1;
   --shadow: 0 1px 2px rgba(24, 20, 12, .06), 0 20px 45px -28px rgba(24, 20, 12, .45);
