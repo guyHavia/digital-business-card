@@ -1,14 +1,14 @@
 @charset "UTF-8";
 
-/* ==========================================================================
-   Itamar Almog — digital business card
+/*
+   Itamar Almog, digital business card
    Hand-written CSS. No preprocessor, no framework, no JavaScript.
 
    Contents
      1.  Design tokens
      2.  Theme switching (dark / light, checkbox + :has())
      3.  Reset & base
-     4.  Page furniture — frame, backdrop, shell
+     4.  Page furniture: frame, backdrop, shell
      5.  Utilities
      6.  Top bar & theme switch control
      7.  Hero
@@ -22,15 +22,13 @@
      15. Motion
      16. Responsive
      17. Print
-   ========================================================================== */
+*/
 
 
-/* ==========================================================================
-   1. Design tokens
-   ========================================================================== */
+/* 1. Design tokens */
 
 :root {
-  /* Palette — dark is the default scheme. */
+  /* Palette. Dark is the default scheme. */
   --bg:        #0a0b0e;
   --surface:   #101319;
   --surface-2: #161a21;
@@ -67,13 +65,11 @@
 }
 
 
-/* ==========================================================================
-   2. Theme switching
+/* 2. Theme switching
 
    The checkbox #theme-toggle is the only state in this project. :has() lets
    the root element react to it, so every token below flips at once and the
-   entire page re-themes without a single line of script.
-   ========================================================================== */
+   entire page re-themes without a single line of script. */
 
 :root:has(#theme-toggle:checked) {
   /* Near-white page with a whisper of warmth. Surfaces sit *below* the page
@@ -105,9 +101,7 @@
 }
 
 
-/* ==========================================================================
-   3. Reset & base
-   ========================================================================== */
+/* 3. Reset & base */
 
 *,
 *::before,
@@ -120,7 +114,7 @@ html {
   scroll-behavior: smooth;
   /* The hero glow is deliberately wider than its container. `clip` contains it
      without turning the root into a scroll container, so smooth anchor
-     scrolling and sticky positioning keep working — `hidden` would not. */
+     scrolling and sticky positioning keep working; `hidden` would not. */
   overflow-x: clip;
 }
 
@@ -173,9 +167,7 @@ code {
 }
 
 
-/* ==========================================================================
-   4. Page furniture — frame, backdrop, shell
-   ========================================================================== */
+/* 4. Page furniture: frame, backdrop, shell */
 
 /* Fine dot grid: a drafting sheet under the whole page. */
 body::before {
@@ -201,7 +193,7 @@ body::after {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* Viewfinder frame with two accented corners — deliberately asymmetric. */
+/* Viewfinder frame with two accented corners, deliberately asymmetric. */
 .frame {
   position: fixed;
   inset: var(--frame-gap);
@@ -245,9 +237,7 @@ body::after {
 }
 
 
-/* ==========================================================================
-   5. Utilities
-   ========================================================================== */
+/* 5. Utilities */
 
 .visually-hidden {
   position: absolute !important;
@@ -291,9 +281,7 @@ body::after {
 }
 
 
-/* ==========================================================================
-   6. Top bar & theme switch control
-   ========================================================================== */
+/* 6. Top bar & theme switch control */
 
 /* Hidden, but still reachable by keyboard and by assistive tech. */
 .theme-input {
@@ -372,7 +360,7 @@ body::after {
 .navlist a:hover::after,
 .navlist a:focus-visible::after { transform: scaleX(1); }
 
-/* --- the switch ---------------------------------------------------------- */
+/* the switch */
 
 .switch {
   order: 2;
@@ -434,9 +422,7 @@ body::after {
 }
 
 
-/* ==========================================================================
-   7. Hero
-   ========================================================================== */
+/* 7. Hero */
 
 .hero {
   position: relative;
@@ -462,7 +448,7 @@ body::after {
   transition: background .4s ease;
 }
 
-/* --- portrait ------------------------------------------------------------ */
+/* portrait */
 
 .portrait {
   position: relative;
@@ -521,7 +507,7 @@ body::after {
   animation: pulse 2.6s ease-out infinite;
 }
 
-/* --- hero text ----------------------------------------------------------- */
+/* hero text */
 
 .hero__body > * + * { margin-top: 1.15rem; }
 
@@ -607,9 +593,7 @@ body::after {
 }
 
 
-/* ==========================================================================
-   8. Section scaffolding
-   ========================================================================== */
+/* 8. Section scaffolding */
 
 .section {
   padding-block: 0 var(--section-gap);
@@ -640,9 +624,7 @@ body::after {
 }
 
 
-/* ==========================================================================
-   9. About
-   ========================================================================== */
+/* 9. About */
 
 .about {
   display: grid;
@@ -686,9 +668,7 @@ body::after {
 }
 
 
-/* ==========================================================================
-   10. Experience timeline
-   ========================================================================== */
+/* 10. Experience timeline */
 
 .timeline { border-top: 1px solid var(--line); transition: border-color .4s ease; }
 
@@ -736,9 +716,7 @@ body::after {
 }
 
 
-/* ==========================================================================
-   11. Projects
-   ========================================================================== */
+/* 11. Projects */
 
 .projects {
   display: grid;
@@ -818,9 +796,7 @@ body::after {
 }
 
 
-/* ==========================================================================
-   12. Skills
-   ========================================================================== */
+/* 12. Skills */
 
 .skills {
   display: grid;
@@ -857,9 +833,7 @@ body::after {
 }
 
 
-/* ==========================================================================
-   13. Contact
-   ========================================================================== */
+/* 13. Contact */
 
 .contact__lede {
   max-width: 48ch;
@@ -953,9 +927,7 @@ body::after {
 }
 
 
-/* ==========================================================================
-   14. Footer
-   ========================================================================== */
+/* 14. Footer */
 
 .footer {
   display: flex;
@@ -993,9 +965,7 @@ body::after {
 .footer__top a:focus-visible { color: var(--accent); }
 
 
-/* ==========================================================================
-   15. Motion
-   ========================================================================== */
+/* 15. Motion */
 
 @keyframes pulse {
   0%   { box-shadow: 0 0 0 0 var(--accent-2); opacity: 1; }
@@ -1037,7 +1007,7 @@ body::after {
   .hero__lede  { animation-delay: .34s; }
   .cta         { animation-delay: .42s; }
 
-  /* Scroll-driven reveals — CSS only, no observers. Guarded so that
+  /* Scroll-driven reveals: CSS only, no observers. Guarded so that
      browsers without support simply show the content immediately. */
   @supports (animation-timeline: view()) {
     .section__head,
@@ -1068,18 +1038,17 @@ body::after {
 }
 
 
-/* ==========================================================================
-   16. Responsive
-   Mobile-first. Everything above is the small-screen layout; each query
-   below only adds what the extra width can pay for.
-   ========================================================================== */
+/* 16. Responsive
 
-/* --- 480px: two-up project grid on large phones -------------------------- */
+   Mobile-first. Everything above is the small-screen layout; each query
+   below only adds what the extra width can pay for. */
+
+/* 480px: two-up project grid on large phones */
 @media (min-width: 30em) {
   .projects { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
-/* --- 640px: roomier frame, timeline gets a date column -------------------- */
+/* 640px: roomier frame, timeline gets a date column */
 @media (min-width: 40em) {
   :root { --frame-gap: 16px; }
 
@@ -1090,7 +1059,7 @@ body::after {
   .portrait { width: min(100%, 320px); }
 }
 
-/* --- 768px: tablets have the width for a side-by-side hero --------------- */
+/* 768px: tablets have the width for a side-by-side hero */
 @media (min-width: 48em) {
   .hero {
     grid-template-columns: minmax(200px, .8fr) minmax(0, 1.7fr);
@@ -1100,7 +1069,7 @@ body::after {
   .portrait { width: 100%; }
 }
 
-/* --- 900px: about splits, projects and skills go three-up ---------------- */
+/* 900px: about splits, projects and skills go three-up */
 @media (min-width: 56.25em) {
   :root { --frame-gap: 20px; }
 
@@ -1128,7 +1097,7 @@ body::after {
   .section { scroll-margin-top: 6rem; }
 }
 
-/* --- 1200px: give the display type its full range ------------------------ */
+/* 1200px: give the display type its full range */
 @media (min-width: 75em) {
   .hero { grid-template-columns: minmax(280px, .75fr) minmax(0, 1.9fr); }
 
@@ -1137,12 +1106,12 @@ body::after {
   .facts__row { grid-template-columns: 8rem minmax(0, 1fr); }
 }
 
-/* --- very wide: stop the measure from running away ----------------------- */
+/* very wide: stop the measure from running away */
 @media (min-width: 100em) {
   .shell { max-width: 1560px; }
 }
 
-/* --- coarse pointers: hover effects would stick, so neutralise them ------- */
+/* coarse pointers: hover effects would stick, so neutralise them */
 @media (hover: none) {
   .portrait:hover::before { transform: translate(14px, 14px); }
   .btn:hover { transform: none; }
@@ -1150,15 +1119,13 @@ body::after {
   .contact__link:hover .contact__arrow { opacity: 0; transform: translateX(-6px); }
 }
 
-/* --- short landscape phones: trim the vertical rhythm -------------------- */
+/* short landscape phones: trim the vertical rhythm */
 @media (max-height: 34em) and (orientation: landscape) {
   .hero { padding-block: 2rem 2.5rem; }
 }
 
 
-/* ==========================================================================
-   17. Print — collapses to a clean, ink-frugal one-pager
-   ========================================================================== */
+/* 17. Print: collapses to a clean, ink-frugal one-pager */
 
 @page { margin: 14mm; }
 
@@ -1191,7 +1158,7 @@ body::after {
 
   .hero { grid-template-columns: 180px 1fr; padding-block: 0 1.5rem; }
 
-  /* Sections are free to split across pages — pinning them whole left half of
+  /* Sections are free to split across pages; pinning them whole left half of
      every sheet blank. Only the small units stay unbroken. */
   .section { padding-block: 0 1.25rem; }
 
