@@ -20,7 +20,7 @@ No JavaScript, no frameworks, no build step.
 | Email address | `index.html`: `#contact` (`mailto:` link) |
 | Dark / light mode button | checkbox `#theme-toggle` + `:root:has(...)` in `css/styles.css` |
 | Responsive (mobile to desktop) | `css/styles.css` §16, mobile-first, 6 breakpoints |
-| Valid semantic HTML | `<header> <main> <section> <figure> <dl> <ol> <footer>` |
+| Valid semantic HTML | `<header> <nav> <main> <section> <dl> <ol> <footer>` |
 | CSS in an external file | all styling lives in `css/styles.css` |
 | No JavaScript | zero `<script>` tags, zero `.js` files |
 
