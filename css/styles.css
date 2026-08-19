@@ -525,10 +525,6 @@ body::after {
 }
 
 .hero__role {
-  display: flex;
-  align-items: center;
-  gap: .85rem;
-  flex-wrap: wrap;
   font-family: var(--font-mono);
   font-size: clamp(.76rem, .68rem + .35vw, .9rem);
   letter-spacing: .1em;
@@ -536,10 +532,19 @@ body::after {
   color: var(--fg-2);
 }
 
-.hero__rule {
-  width: clamp(24px, 5vw, 56px);
-  height: 1px;
-  background: var(--accent);
+/* The field of study sits on its own line while the two halves would not
+   comfortably share one, and joins the role behind a middot once there is
+   room. Generating the separator means it can never dangle at a line end. */
+.hero__field { display: block; }
+
+@media (min-width: 40em) {
+  .hero__field { display: inline; }
+
+  .hero__field::before {
+    content: "·";
+    margin-inline: .7em;
+    color: var(--accent);
+  }
 }
 
 .hero__lede {
